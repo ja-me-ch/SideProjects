@@ -1,0 +1,324 @@
+﻿<Window x:Class="MS_CheckList_App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MS_CheckList_App"
+        mc:Ignorable="d"
+        Title="MS CheckList App" Height="450" Width="800">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="{x:Type Border}">
+                <Setter Property="BorderBrush" Value="Gray"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Margin" Value="1 1 1 1"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="15"/>
+        </Grid.RowDefinitions>
+        <Menu x:Name="_menu"
+              Grid.Column="0"
+              Grid.ColumnSpan="10"
+              Grid.Row="0">
+            <MenuItem Header="File">
+                <MenuItem x:Name="MenuItem_New"  Header="New" Click="MenuItem_New_Click"/>
+                <MenuItem x:Name="MenuItem_Load" Header="Load" Click="MenuItem_Load_Click"/>
+                <MenuItem x:Name="MenuItem_Save" Header="Save" Click="MenuItem_Save_Click" />
+                <MenuItem x:Name="MenuItem_Settings" Header="Settings"/>
+                <MenuItem x:Name="MenuItem_Exit" Header="Exit"/>
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem x:Name="MenuItem_ResetAll" Header="Reset All" Click="MenuItem_ResetAll_Click"/>
+                <MenuItem x:Name="MenuItem_ResetDaily" Header="Reset All Dailies" Click="MenuItem_ResetDaily_Click"/>
+                <MenuItem x:Name="MenuItem_ResetWeeklyWednesday" Header="Reset All Weeklies (Wednesday)" Click="MenuItem_ResetWeeklyWednesday_Click"/>
+                <MenuItem x:Name="MenuItem_ResetWeeklySunday" Header="Reset All Weeklies (Sunday)" Click="MenuItem_ResetWeeklySunday_Click"/>
+            </MenuItem>
+        </Menu>
+        <TextBlock Text="Profile Loaded:"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"/>
+        <TextBlock x:Name="txbl_ProfileName"
+                   Grid.Column="2"
+                   Grid.Row="1"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="10 0 0 0"
+                   Grid.ColumnSpan="1">
+            <Run Text="{Binding ProfileName, Mode=TwoWay}"/>
+        </TextBlock>
+        <TextBlock Text="Early Game"
+                   Grid.Column="1"
+                   Grid.Row="2"/>
+        <TextBlock Text="Mid Game"
+                   Grid.Column="2"
+                   Grid.Row="2"/>
+        <TextBlock Text="Late Game"
+                   Grid.Column="3"
+                   Grid.Row="2"/>
+        <TextBlock Text="Arcane River"
+                   Grid.Column="4"
+                   Grid.Row="2"/>
+        <!--<Border x:Name="Border_1"
+                Grid.Column="1"
+                Grid.Row="3">-->
+        <StackPanel x:Name="StackPanel_1"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                        Margin="1 1 1 1">
+            <Border x:Name="Border_1_1"
+                Grid.Column="1"
+                Grid.Row="3"
+                Margin="1">
+                <StackPanel x:Name="StackPanel_1_1">
+                    <RadioButton Name="rb_eZak" Content="Easy Zakum" IsChecked="{Binding eZak, Mode=TwoWay}" GroupName="Zakum"/>
+                    <RadioButton Name="rb_nZak" Content="Normal Zakum" IsChecked="{Binding nZak, Mode=TwoWay}" GroupName="Zakum"/>
+                    <CheckBox Name="cb_cZak" Content="Chaos Zakum" IsChecked="{Binding cZak, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+            <Border x:Name="Border_1_2"
+                Grid.Column="1"
+                Grid.Row="4"
+                Margin="1">
+                <StackPanel x:Name="StackPanel_1_2">
+                    <RadioButton Name="rb_eVLeon" Content="Easy VonLeon" IsChecked="{Binding eVLeon, Mode=TwoWay}" GroupName="VonLeon"/>
+                    <RadioButton Name="rb_nVLeon" Content="Normal VonLeon" IsChecked="{Binding nVLeon, Mode=TwoWay}" GroupName="VonLeon"/>
+                    <RadioButton Name="rb_hVLeon" Content="Hard VonLeon" IsChecked="{Binding hVLeon, Mode=TwoWay}" GroupName="VonLeon"/>
+                </StackPanel>
+            </Border>
+            <Border x:Name="Border_1_3"
+                Grid.Column="1"
+                Grid.Row="4"
+                Margin="1">
+                <StackPanel x:Name="StackPanel_1_3">
+                    <RadioButton Name="rb_eHTail" Content="Easy Horntail" IsChecked="{Binding eHTail, Mode=TwoWay}" GroupName="Horntail"/>
+                    <RadioButton Name="rb_nHTail" Content="Normal Horntail" IsChecked="{Binding nHTail, Mode=TwoWay}" GroupName="Horntail"/>
+                    <RadioButton Name="rb_cHTail" Content="Hard Horntail" IsChecked="{Binding cHTail, Mode=TwoWay}" GroupName="Horntail"/>
+                </StackPanel>
+            </Border>
+            <Border x:Name="Border_1_4"
+                Grid.Column="1"
+                Grid.Row="4"
+                Margin="1">
+                <StackPanel x:Name="StackPanel_1_4">
+                    <RadioButton Name="rb_eArk" Content="Easy Arkarium" IsChecked="{Binding eArk, Mode=TwoWay}" GroupName="Arkarium"/>
+                    <RadioButton Name="rb_nArk" Content="Normal Arkarium" IsChecked="{Binding nArk, Mode=TwoWay}" GroupName="Arkarium"/>
+                </StackPanel>
+            </Border>
+            <Border x:Name="Border_1_5"
+                Grid.Column="1"
+                Grid.Row="4"
+                Margin="1">
+                <StackPanel x:Name="StackPanel_1_5">
+                    <RadioButton Name="rb_nRanmaru" Content="Normal Ranmaru" IsChecked="{Binding nRanmaru, Mode=TwoWay}" GroupName="Ranmaru"/>
+                    <RadioButton Name="rb_hRanmaru" Content="Hard Ranmaru" IsChecked="{Binding hRanmaru, Mode=TwoWay}" GroupName="Ranmaru"/>
+                </StackPanel>
+            </Border>
+            <Border x:Name="Border_1_6"
+                Grid.Column="1"
+                Grid.Row="4"
+                Margin="1">
+                <StackPanel x:Name="StackPanel_1_6">
+                    <RadioButton Name="rb_nHilla" Content="Normal Hilla" IsChecked="{Binding nHilla, Mode=TwoWay}" GroupName="Hilla"/>
+                    <RadioButton Name="rb_hHilla" Content="Hard Hilla" IsChecked="{Binding hHilla, Mode=TwoWay}" GroupName="Hilla"/>
+                </StackPanel>
+            </Border>
+            <Border x:Name="Border_1_7"
+                Grid.Column="1"
+                Grid.Row="4"
+                Margin="1">
+                <StackPanel x:Name="StackPanel_1_7">
+                    <RadioButton Name="rb_eCygnus" Content="Easy Cygnus" IsChecked="{Binding eCygnus, Mode=TwoWay}" GroupName="Cygnus"/>
+                    <RadioButton Name="rb_nCygnus" Content="Normal Cygnus" IsChecked="{Binding nCygnus, Mode=TwoWay}" GroupName="Cygnus"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel x:Name="StackPanel_1_8">
+                    <CheckBox Name="chbx_dojDojo" Content="Mulung Dojo" IsChecked="{Binding dojDojo, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_mpMonsterPark" Content="Monster Park" IsChecked="{Binding mpMonsterPark, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+        <!--</Border>
+        <Border x:Name="Border_2"
+                Grid.Column="2"
+                Grid.Row="3">-->
+        <StackPanel x:Name="StackPanel_2"
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    Margin="1 1 1 1">
+            <Border x:Name="Border_2_1"
+                Grid.Column="1"
+                Grid.Row="3"
+                Margin="1">
+                <StackPanel x:Name="StackPanel_2_1">
+                    <TextBlock Name="lb_RootAbyss" Text="Root Abyss"/>
+                    <CheckBox Name="chbx_nCQueen" Content="Crimson Queen" IsChecked="{Binding nCQueen, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_nPierre" Content="Pierre" IsChecked="{Binding nPierre, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_nVonBon" Content="Von Bon" IsChecked="{Binding nVonBon, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_nVellum" Content="Vellum" IsChecked="{Binding nVellum, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+            <Border x:Name="Border_2_2"
+                Grid.Column="1"
+                Grid.Row="3"
+                Margin="1">
+                <StackPanel x:Name="StackPanel_2_2">
+                    <TextBlock Name="lb_ChaosRootAbyss" Text="Chaos Root Abyss"/>
+                    <CheckBox Name="chbx_cCQueen" Content="Crimson Queen" IsChecked="{Binding cCQueen, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_cPierre" Content="Pierre" IsChecked="{Binding cPierre, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_cVonBon" Content="Von Bon" IsChecked="{Binding cVonBon, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_cVellum" Content="Vellum" IsChecked="{Binding cVellum, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+            <Border x:Name="Border_2_3"
+                Grid.Column="1"
+                Grid.Row="3"
+                Margin="1">
+                <StackPanel x:Name="StackPanel_2_3">
+                    <CheckBox Name="chbx_nPinkBean" Content="Normal Pink Bean" IsChecked="{Binding nPinkBean, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_cPinkBean" Content="Chaos Pink Bean" IsChecked="{Binding cPinkBean, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+            <Border x:Name="Border_2_4"
+                Grid.Column="1"
+                Grid.Row="3"
+                Margin="1">
+                <StackPanel x:Name="StackPanel_2_4">
+                    <RadioButton Name="rb_eMagnus" Content="Easy Magnus" IsChecked="{Binding eMagnus, Mode=TwoWay}" GroupName="Magnus"/>
+                    <RadioButton Name="rb_nMagnus" Content="Normal Magnus" IsChecked="{Binding nMagnus, Mode=TwoWay}" GroupName="Magnus"/>
+                    <CheckBox Name="chbx_hMagnus" Content="Hard Magnus" IsChecked="{Binding hMagnus, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+            <Border x:Name="Border_2_5"
+                Grid.Column="1"
+                Grid.Row="3"
+                Margin="1">
+                <StackPanel x:Name="StackPanel_2_5">
+                    <CheckBox Name="chbx_Gollux" Content="Gollux" IsChecked="{Binding gollux, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_Ursus" Content="Ursus" IsChecked="{Binding ursus, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel>
+                    <CheckBox Name="chbx_legQuests" Content="Legion Dailies" IsChecked="{Binding legQuests, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+        <!--</Border>
+        <Border x:Name="Border_3"
+                Grid.Column="3"
+                Grid.Row="3">-->
+        <StackPanel x:Name="StackPanel_3"
+                        Margin="1 1 1 1"
+                        Grid.Column="3"
+                        Grid.Row="3">
+            <Border x:Name="Border_3_1"
+                Grid.Column="1"
+                Grid.Row="3"
+                Margin="1">
+                <StackPanel x:Name="StackPanel_3_1">
+                    <RadioButton Name="rb_nLotus" Content="Normal Lotus" IsChecked="{Binding nLotus, Mode=TwoWay}" GroupName="Lotus"/>
+                    <RadioButton Name="rb_hLotus" Content="Hard Lotus" IsChecked="{Binding hLotus, Mode=TwoWay}" GroupName="Lotus"/>
+                </StackPanel>
+            </Border>
+            <Border x:Name="Border_3_2"
+                Grid.Column="1"
+                Grid.Row="3"
+                Margin="1">
+                <StackPanel x:Name="StackPanel_3_2">
+                    <RadioButton Name="rb_nDamien" Content="Normal Damien" IsChecked="{Binding nDamien, Mode=TwoWay}" GroupName="Damien"/>
+                    <RadioButton Name="rb_hDamien" Content="Hard Damien" IsChecked="{Binding hDamien, Mode=TwoWay}" GroupName="Damien"/>
+                </StackPanel>
+            </Border>
+            <Border x:Name="Border_3_3"
+                Grid.Column="1"
+                Grid.Row="3"
+                Margin="1">
+                <StackPanel x:Name="StackPanel_3_3">
+                    <RadioButton Name="rb_nLucid" Content="Normal Lucid" IsChecked="{Binding nLucid, Mode=TwoWay}" GroupName="Lucid"/>
+                    <RadioButton Name="rb_hLucid" Content="Hard Lucid" IsChecked="{Binding hLucid, Mode=TwoWay}" GroupName="Lucid"/>
+                </StackPanel>
+            </Border>
+            <Border x:Name="Border_3_4"
+                Grid.Column="1"
+                Grid.Row="3"
+                Margin="1">
+                <StackPanel x:Name="StackPanel_3_4">
+                    <RadioButton Name="rb_nWill" Content="Normal Will" IsChecked="{Binding nWill, Mode=TwoWay}" GroupName="Will"/>
+                    <RadioButton Name="rb_hWill" Content="Hard Will" IsChecked="{Binding hWill, Mode=TwoWay}" GroupName="Will"/>
+                </StackPanel>
+            </Border>
+            <Border x:Name="Border_3_5"
+                Grid.Column="1"
+                Grid.Row="3"
+                Margin="1">
+                <StackPanel x:Name="StackPanel_3_5">
+                    <TextBlock Text="Tenebris Bosses"/>
+                    <CheckBox Name="chbx_nGloom" Content="Gloom" IsChecked="{Binding nGloom, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_hVHilla" Content="Verus Hilla" IsChecked="{Binding hVHilla, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_nDarknell" Content="Darknell" IsChecked="{Binding nDarknell, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_hBlackMage" Content="Black Mage" IsChecked="{Binding hBlackMage, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+            <Border x:Name="Border_3_6"
+                Grid.Column="1"
+                Grid.Row="3"
+                Margin="1">
+                <StackPanel x:Name="StackPanel_3_6">
+                    <TextBlock Text="Misc."/>
+                    <CheckBox Name="chbx_comVoyages" Content="Commerci Voyages" IsChecked="{Binding comVoyages, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_comPQ" Content="Commerci PQ (MTU)" IsChecked="{Binding comPQ, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_syQuests" Content="Scrapyard Quests" IsChecked="{Binding syQuests, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_dwtQuests" Content="Dark World Tree Quests" IsChecked="{Binding dwtQuests, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+        <!--</Border>
+        <Border x:Name="Border_4"
+                Grid.Column="4"
+                Grid.Row="3">-->
+        <StackPanel x:Name="StackPanel_4"
+                        Margin="1 1 1 1"
+                        Grid.Column="4"
+                        Grid.Row="3">
+            <Border x:Name="Border_4_1"
+                Grid.Column="1"
+                Grid.Row="3"
+                Margin="1">
+                <StackPanel x:Name="StackPanel_4_1">
+                    <TextBlock Text="Vanishing Journey"/>
+                    <CheckBox Name="chbx_vjQuests" Content="Daily Quests" IsChecked="{Binding vjQuests, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_vjErdaSpectrum" Content="Erda Spectrum" IsChecked="{Binding vjErdaSpectrum, Mode=TwoWay}"/>
+                    <TextBlock Text="Chu Chu Island"/>
+                    <CheckBox Name="chbx_chuchuQuests" Content="Daily Quests" IsChecked="{Binding chuchuQuests, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_chuchuHMuto" Content="Hungry Muto" IsChecked="{Binding chuchuHMuto, Mode=TwoWay}"/>
+                    <TextBlock Text="Lachelein"/>
+                    <CheckBox Name="chbx_lachQuests" Content="Daily Quests" IsChecked="{Binding lachQuests, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_lachDDefender" Content="Dream Defender" IsChecked="{Binding lachDDefender, Mode=TwoWay}"/>
+                    <TextBlock Text="Arcana"/>
+                    <CheckBox Name="chbx_arcQuests" Content="Daily Quests" IsChecked="{Binding arcQuests, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_arcSSavior" Content="Spirit Savior" IsChecked="{Binding arcSSavior, Mode=TwoWay}"/>
+                    <TextBlock Text="Morass &amp; Esfera"/>
+                    <CheckBox Name="chbx_morQuests" Content="Morass Daily Quests" IsChecked="{Binding morQuests, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_esfQuests" Content="Esfera Daily Quests" IsChecked="{Binding esfQuests, Mode=TwoWay}"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+        <!--</Border>-->
+    </Grid>
+</Window>
