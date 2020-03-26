@@ -17,6 +17,7 @@ using System.Xml.Serialization;
 using Microsoft.Win32;
 using Path = System.IO.Path;
 using System.Threading;
+using System.Diagnostics;
 
 namespace MS_CheckList_App
 {
@@ -50,6 +51,8 @@ namespace MS_CheckList_App
                     XmlSerializer xmlSerializer = new XmlSerializer(typeof(Profile));
                     safeFileName = Path.GetFileNameWithoutExtension(saveFileDialog.FileName);
                     StreamWriter sw = new StreamWriter(safeFileName+".xml");
+                    //Trace.WriteLine(profileLoaded.ProfileName);
+                    //Trace.WriteLine(safeFileName);
                     profileLoaded.ProfileName = safeFileName;
                     xmlSerializer.Serialize(sw, profileLoaded);
                     sw.Close();
@@ -59,12 +62,12 @@ namespace MS_CheckList_App
                 }
                 else
                 {
-                    MessageBox.Show("Save Dialog exited.");
+                    Trace.WriteLine("Save Dialog Exited.");
                 }
             }//end of if
             else
             {
-                MessageBox.Show("Profile found, saving to " + safeFileName + ".xml");
+                Trace.WriteLine("Profile found, saving to " + safeFileName + ".xml");
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(Profile));
                 StreamWriter sw = new StreamWriter(safeFileName + ".xml");
                 xmlSerializer.Serialize(sw, profileLoaded);
@@ -91,7 +94,7 @@ namespace MS_CheckList_App
                     }
                     else
                     {
-                        profileLoaded = null;
+                        profileLoaded.ResetAll();
                         MessageBox.Show("Profile loaded successfully.");
                         profileLoaded = (Profile)xmlSerializer.Deserialize(openFileDialog.OpenFile());
                         safeFileName = Path.GetFileNameWithoutExtension(openFileDialog.FileName);
@@ -109,39 +112,59 @@ namespace MS_CheckList_App
 
         private void MenuItem_New_Click(object sender, RoutedEventArgs e)
         {
-            profileLoaded = null;
+            profileLoaded.ResetAll();
             isProfileLoaded = false;
             DataContext = profileLoaded;
         }
 
         private void MenuItem_ResetAll_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = null;
             profileLoaded.ResetDaily();
             profileLoaded.ResetWeeklyWednesday();
             profileLoaded.ResetWeeklySunday();
-            DataContext = profileLoaded;
         }
 
         private void MenuItem_ResetDaily_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = null;
             profileLoaded.ResetDaily();
-            DataContext = profileLoaded;
         }
 
         private void MenuItem_ResetWeeklyWednesday_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = null;
             profileLoaded.ResetWeeklyWednesday();
-            DataContext = profileLoaded;
         }
 
         private void MenuItem_ResetWeeklySunday_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = null;
             profileLoaded.ResetWeeklySunday();
-            DataContext = profileLoaded;
+        }
+
+        private void MenuItem_Exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void MenuItem_Settings_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Nothing here.");
+        }
+
+        private void MenuItem_ViewHelp_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Nothing here.");
+        }
+
+        private void MenuItem_About_Click(object sender, RoutedEventArgs e)
+        {
+            if (profileLoaded.ProfileName == "Xuey" || profileLoaded.ProfileName == "KunMoLee6" || profileLoaded.ProfileName == "Arkvaaark" || profileLoaded.ProfileName == "Rakusas" || profileLoaded.ProfileName == "Vivin" || profileLoaded.ProfileName == "Arkument" || profileLoaded.ProfileName == "Stockwell")
+            {
+                MessageBox.Show("Cleanse best guild. uwu");
+            }
+            else
+            {
+                MessageBox.Show("Something here.");
+            }
+            
         }
     }//end of class
 }//end of namespace

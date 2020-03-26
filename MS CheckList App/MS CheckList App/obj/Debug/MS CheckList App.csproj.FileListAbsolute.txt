@@ -12,3 +12,17 @@ C:\Users\JC\source\repos\MS CheckList App\MS CheckList App\obj\Debug\MS_CheckLis
 C:\Users\JC\source\repos\MS CheckList App\MS CheckList App\obj\Debug\MS CheckList App.csproj.GenerateResource.cache
 C:\Users\JC\source\repos\MS CheckList App\MS CheckList App\obj\Debug\MS CheckList App.exe
 C:\Users\JC\source\repos\MS CheckList App\MS CheckList App\obj\Debug\MS CheckList App.pdb
+C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\bin\Debug\MS CheckList App.exe.config
+C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\bin\Debug\MS CheckList App.exe
+C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\bin\Debug\MS CheckList App.pdb
+C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\MS CheckList App.csprojAssemblyReference.cache
+C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\MainWindow.g.cs
+C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\App.g.cs
+C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\MS CheckList App_MarkupCompile.cache
+C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\MS CheckList App_MarkupCompile.lref
+C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\MainWindow.baml
+C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\MS CheckList App.g.resources
+C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\MS_CheckList_App.Properties.Resources.resources
+C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\MS CheckList App.csproj.GenerateResource.cache
+C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\MS CheckList App.exe
+C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\MS CheckList App.pdb
