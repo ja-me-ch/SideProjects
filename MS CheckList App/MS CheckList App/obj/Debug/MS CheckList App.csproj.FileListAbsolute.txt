@@ -26,3 +26,5 @@ C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\MS_C
 C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\MS CheckList App.csproj.GenerateResource.cache
 C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\MS CheckList App.exe
 C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\MS CheckList App.pdb
+C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\SettingsWindow.g.cs
+C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\SettingsWindow.baml

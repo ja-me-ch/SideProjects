@@ -51,8 +51,6 @@ namespace MS_CheckList_App
                     XmlSerializer xmlSerializer = new XmlSerializer(typeof(Profile));
                     safeFileName = Path.GetFileNameWithoutExtension(saveFileDialog.FileName);
                     StreamWriter sw = new StreamWriter(safeFileName+".xml");
-                    //Trace.WriteLine(profileLoaded.ProfileName);
-                    //Trace.WriteLine(safeFileName);
                     profileLoaded.ProfileName = safeFileName;
                     xmlSerializer.Serialize(sw, profileLoaded);
                     sw.Close();
@@ -90,22 +88,25 @@ namespace MS_CheckList_App
 
                     if ((Profile)xmlSerializer.Deserialize(openFileDialog.OpenFile()) == null)
                     {
-                        MessageBox.Show("Invalid file");
+                        MessageBox.Show("Invalid file", "Error");
                     }
                     else
                     {
                         profileLoaded.ResetAll();
-                        MessageBox.Show("Profile loaded successfully.");
+                        Trace.WriteLine("Profile loaded successfully.");
                         profileLoaded = (Profile)xmlSerializer.Deserialize(openFileDialog.OpenFile());
-                        safeFileName = Path.GetFileNameWithoutExtension(openFileDialog.FileName);
-                        profileLoaded.ProfileName = safeFileName;
+                        if (profileLoaded.ProfileName == null)
+                        {
+                            safeFileName = Path.GetFileNameWithoutExtension(openFileDialog.FileName);
+                            profileLoaded.ProfileName = safeFileName;
+                        }
                         DataContext = profileLoaded;
                         isProfileLoaded = true;
                     }//end of else
                 }//end of try
                 catch (Exception)
                 {
-                    MessageBox.Show("Invalid file");
+                    MessageBox.Show("Invalid file", "Error");
                 }
             }//end of if
         }//end of MenuItem_Load_Click
@@ -146,23 +147,33 @@ namespace MS_CheckList_App
 
         private void MenuItem_Settings_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Nothing here.");
-        }
+            if ( isProfileLoaded == true)
+            {
+                SettingsWindow settingsWindow = new SettingsWindow();
+                settingsWindow.Show();
+            }//end of if
+            else
+            {
+                MessageBox.Show("Please load a profile.", "Error");
+            }//end of else
+        }//end of MenuItem_Settings_Click
 
         private void MenuItem_ViewHelp_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Nothing here.");
+            MessageBox.Show("Saving a profile will set its profile name to the filename.\n\n" +
+                "You can change your profile name in the settings menu after you have saved a profile.\n\n" +
+                "Currently there is no automatic reset feature. You can reset manually in the Tools menu.", "Help");
         }
 
         private void MenuItem_About_Click(object sender, RoutedEventArgs e)
         {
             if (profileLoaded.ProfileName == "Xuey" || profileLoaded.ProfileName == "KunMoLee6" || profileLoaded.ProfileName == "Arkvaaark" || profileLoaded.ProfileName == "Rakusas" || profileLoaded.ProfileName == "Vivin" || profileLoaded.ProfileName == "Arkument" || profileLoaded.ProfileName == "Stockwell")
             {
-                MessageBox.Show("Cleanse best guild. uwu");
+                MessageBox.Show("Cleanse best guild. uwu", "Secret Menu");
             }
             else
             {
-                MessageBox.Show("Something here.");
+                MessageBox.Show("Enjoy playing Mushroom Game. uwu", "About");
             }
             
         }

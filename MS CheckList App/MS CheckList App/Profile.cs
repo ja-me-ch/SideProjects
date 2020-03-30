@@ -13,7 +13,17 @@ namespace MS_CheckList_App
     public class Profile : ISerializable, INotifyPropertyChanged
     {
         //Profile Data
-        public String ProfileName { get; set; }
+        private String profileName;
+        public String ProfileName
+        {
+            get { return profileName; }
+            set { if (profileName != value)
+                {
+                    profileName = value;
+                    OnPropertyChanged("ProfileName");
+                } 
+            }
+        }
         public String description { get; set; }
 
         public DateTime LastDateTimeReset_Daily { get; set; }
