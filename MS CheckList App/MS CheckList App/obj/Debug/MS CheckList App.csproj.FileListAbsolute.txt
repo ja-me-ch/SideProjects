@@ -28,3 +28,4 @@ C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\MS C
 C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\MS CheckList App.pdb
 C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\SettingsWindow.g.cs
 C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\SettingsWindow.baml
+C:\Users\JC\source\SideProjects\MS CheckList App\MS CheckList App\obj\Debug\MS CheckList App.csproj.CoreCompileInputs.cache

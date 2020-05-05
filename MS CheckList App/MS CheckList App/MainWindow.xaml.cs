@@ -33,12 +33,49 @@ namespace MS_CheckList_App
         public static DateTime DailyResetTime;
         public static DateTime WeeklyResetTimeBosses;
         public static DateTime WeeklyResetTimeQuests;
+        public static string SettingsWindow_ComboBox_WeeklyBoss_Result;
+        public static string SettingsWindow_ComboBox_WeeklyQuest_Result;
+        public DateTime initialDateTime;
 
         public MainWindow()
         {
             InitializeComponent();
             DataContext = profileLoaded;
+            StatusBarStatusText("Ready");
+            //WaitForDailyReset();
         }//end of MainWindow
+
+        public void WaitForDailyReset()
+        {
+            string dailyResetTimeString = Properties.Settings.Default.DailyResetTime.ToString();
+            string weeklyResetBossString = Properties.Settings.Default.WeeklyBossResetDay.ToString();
+            string weklyResetQuestString = Properties.Settings.Default.WeeklyQuestResetDay.ToString();
+            //if ()
+            initialDateTime = DateTime.Now;
+            string initialDayOfMonth = initialDateTime.Day.ToString();
+            string initialDayOfWeek = initialDateTime.DayOfWeek.ToString();
+            string initialTimeOfDay = initialDateTime.TimeOfDay.ToString();
+            string initialMonth = initialDateTime.Month.ToString();
+            string initialYear = initialDateTime.Year.ToString();
+
+            DateTime nextDateTime = initialDateTime.AddHours(24);
+            string nextDayOfMonth = nextDateTime.Day.ToString();
+            string nextDayOfWeek = nextDateTime.DayOfWeek.ToString();
+            string nextTimeOfDay = nextDateTime.TimeOfDay.ToString();
+            string nextMonth = nextDateTime.Month.ToString();
+            string nextYear = nextDateTime.Year.ToString();
+
+            string initialResetDate = $"{initialDayOfWeek}, {initialDayOfMonth} {initialMonth} {initialYear} {initialTimeOfDay}";
+            DateTime initialParsedDateTime = DateTime.Parse(initialResetDate);
+            
+            
+            //string resetDateTime = ""
+            //DateTime resetDateTime = ""
+            //MessageBox.Show(currentDayOfYear);
+            string dailyTime = Properties.Settings.Default.DailyResetTime.ToString();
+
+            //MessageBox.Show(dailyTime);
+        }
 
         private void MenuItem_Save_Click(object sender, RoutedEventArgs e)
         {
@@ -57,15 +94,17 @@ namespace MS_CheckList_App
                     isProfileLoaded = true;
                     DataContext = null;
                     DataContext = profileLoaded;
+                    //StatusBarStatusText("Profile successfully saved");
+                    //statusbar_CurrentFile.Text = Path.GetFileName(saveFileDialog.FileName);
                 }
                 else
                 {
-                    Trace.WriteLine("Save Dialog Exited.");
+                    StatusBarStatusText("Save dialog exited");
                 }
             }//end of if
             else
             {
-                Trace.WriteLine("Profile found, saving to " + safeFileName + ".xml");
+                StatusBarStatusText("Profile successfully saved");
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(Profile));
                 StreamWriter sw = new StreamWriter(safeFileName + ".xml");
                 xmlSerializer.Serialize(sw, profileLoaded);
@@ -88,25 +127,26 @@ namespace MS_CheckList_App
 
                     if ((Profile)xmlSerializer.Deserialize(openFileDialog.OpenFile()) == null)
                     {
-                        MessageBox.Show("Invalid file", "Error");
+                        StatusBarStatusText("No file selected");
                     }
                     else
                     {
                         profileLoaded.ResetAll();
-                        Trace.WriteLine("Profile loaded successfully.");
                         profileLoaded = (Profile)xmlSerializer.Deserialize(openFileDialog.OpenFile());
                         if (profileLoaded.ProfileName == null)
                         {
                             safeFileName = Path.GetFileNameWithoutExtension(openFileDialog.FileName);
                             profileLoaded.ProfileName = safeFileName;
                         }
+                        StatusBarStatusText("Profile loaded successfully");
+                        statusbar_CurrentFile.Text = Path.GetFileName(openFileDialog.FileName);
                         DataContext = profileLoaded;
                         isProfileLoaded = true;
                     }//end of else
                 }//end of try
                 catch (Exception)
                 {
-                    MessageBox.Show("Invalid file", "Error");
+                    StatusBarStatusText("Error, invalid file");
                 }
             }//end of if
         }//end of MenuItem_Load_Click
@@ -116,6 +156,7 @@ namespace MS_CheckList_App
             profileLoaded.ResetAll();
             isProfileLoaded = false;
             DataContext = profileLoaded;
+            StatusBarStatusText("New profile created");
         }
 
         private void MenuItem_ResetAll_Click(object sender, RoutedEventArgs e)
@@ -123,21 +164,25 @@ namespace MS_CheckList_App
             profileLoaded.ResetDaily();
             profileLoaded.ResetWeeklyWednesday();
             profileLoaded.ResetWeeklySunday();
+            statusbar_Status.Text = "Reset All complete";
         }
 
         private void MenuItem_ResetDaily_Click(object sender, RoutedEventArgs e)
         {
             profileLoaded.ResetDaily();
+            StatusBarStatusText("Daily Reset complete");
         }
 
         private void MenuItem_ResetWeeklyWednesday_Click(object sender, RoutedEventArgs e)
         {
             profileLoaded.ResetWeeklyWednesday();
+            StatusBarStatusText("Weekly (Wed) Reset complete");
         }
 
         private void MenuItem_ResetWeeklySunday_Click(object sender, RoutedEventArgs e)
         {
             profileLoaded.ResetWeeklySunday();
+            statusbar_Status.Text = "Weekly (Sun) Reset complete";
         }
 
         private void MenuItem_Exit_Click(object sender, RoutedEventArgs e)
@@ -167,7 +212,7 @@ namespace MS_CheckList_App
 
         private void MenuItem_About_Click(object sender, RoutedEventArgs e)
         {
-            if (profileLoaded.ProfileName == "Xuey" || profileLoaded.ProfileName == "KunMoLee6" || profileLoaded.ProfileName == "Arkvaaark" || profileLoaded.ProfileName == "Rakusas" || profileLoaded.ProfileName == "Vivin" || profileLoaded.ProfileName == "Arkument" || profileLoaded.ProfileName == "Stockwell")
+            if (EasterEggCheck(profileLoaded.ProfileName) == true)
             {
                 MessageBox.Show("Cleanse best guild. uwu", "Secret Menu");
             }
@@ -175,7 +220,29 @@ namespace MS_CheckList_App
             {
                 MessageBox.Show("Enjoy playing Mushroom Game. uwu", "About");
             }
-            
+        }//end of MenuItem_About_Click
+
+        public void StatusBarStatusText(string status)
+        {
+            statusbar_Status.Text = status;
         }
+
+        private Boolean EasterEggCheck(string profileName)
+        {
+            List<string> cleanse = new List<string>() 
+            {
+                "Xuey", "KunMoLee6", "Arkvaaark", "Vivin", "Stockwell", "Rakusas"
+            };
+            foreach (string name in cleanse)
+            {
+                if (profileName == name)
+                {
+                    StatusBarStatusText("Easter Egg Activated.");
+                    return true;
+                }
+            }//end of foreach
+            return false;
+        }//end of EasterEggCheck
+
     }//end of class
 }//end of namespace

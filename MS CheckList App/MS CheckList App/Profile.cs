@@ -26,9 +26,48 @@ namespace MS_CheckList_App
         }
         public String description { get; set; }
 
-        public DateTime LastDateTimeReset_Daily { get; set; }
-        public DateTime LastDateTimeReset_WeeklyWednesday { get; set; }
-        public DateTime LastDateTimeReset_WeeklySunday { get; set; }
+        private DateTime lastDateTimeReset_Daily;
+        public DateTime LastDateTimeReset_Daily 
+        { 
+            get { return lastDateTimeReset_Daily; }
+            set
+            {
+                if (lastDateTimeReset_Daily != value)
+                {
+                    lastDateTimeReset_Daily = value;
+                    OnPropertyChanged("LastDateTimeReset_Daily");
+                }
+            }
+        }
+
+        private DateTime lastDateTimeReset_WeeklyWednesday;
+        public DateTime LastDateTimeReset_WeeklyWednesday 
+        { 
+            get { return lastDateTimeReset_WeeklyWednesday; }
+            set
+            {
+                if (lastDateTimeReset_WeeklyWednesday != value)
+                {
+                    lastDateTimeReset_WeeklyWednesday = value;
+                    OnPropertyChanged("LastDateTimeReset_WeeklyWednesday");
+
+                }
+            }
+        }
+
+        private DateTime lastDateTimeReset_WeeklySunday;
+        public DateTime LastDateTimeReset_WeeklySunday 
+        { 
+            get { return lastDateTimeReset_WeeklySunday; }
+            set
+            {
+                if (lastDateTimeReset_WeeklySunday != value)
+                {
+                    lastDateTimeReset_WeeklySunday = value;
+                    OnPropertyChanged("LastDateTimeReset_WeeklySunday");
+                }
+            }
+        }
 
         //Constructors
         public Profile()
@@ -518,7 +557,7 @@ namespace MS_CheckList_App
             {
                 if (mapleTour != value)
                 {
-                    MapleTour = value;
+                    mapleTour = value;
                     OnPropertyChanged("MapleTour");
                 }
             }
@@ -963,6 +1002,7 @@ namespace MS_CheckList_App
             ArcSSavior = false;
             MorQuests = false;
             EsfQuests = false;
+            LastDateTimeReset_Daily = DateTime.Now;
         }//end of ResetDaily
 
         public void ResetWeeklyWednesday()
@@ -988,6 +1028,7 @@ namespace MS_CheckList_App
             HVHilla = false;
             NDarknell = false;
             HBlackMage = false;
+            LastDateTimeReset_WeeklyWednesday = DateTime.Now;
         }
 
         public void ResetWeeklySunday()
@@ -995,6 +1036,7 @@ namespace MS_CheckList_App
             DojDojo = false;
             SyQuests = false;
             DwtQuests = false;
+            LastDateTimeReset_WeeklySunday = DateTime.Now;
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
@@ -1062,6 +1104,9 @@ namespace MS_CheckList_App
             info.AddValue("Esf Quests", esfQuests);
             info.AddValue("SY Quests", syQuests);
             info.AddValue("DWT Quests", dwtQuests);
+            info.AddValue("LastDateTimeReset_Daily", lastDateTimeReset_Daily);
+            info.AddValue("LastDateTimeReset_WeeklyWednesday", lastDateTimeReset_WeeklyWednesday);
+            info.AddValue("LastDateTimeReset_WeeklySunday", lastDateTimeReset_WeeklySunday);
         }
 
         public Profile(SerializationInfo info, StreamingContext context)
@@ -1125,6 +1170,9 @@ namespace MS_CheckList_App
             esfQuests = (bool)info.GetValue("Esf Quests", typeof(bool));
             syQuests = (bool)info.GetValue("SY Quests", typeof(bool));
             dwtQuests = (bool)info.GetValue("DWT Quests", typeof(bool));
+            lastDateTimeReset_Daily = (DateTime)info.GetValue("LastDateTimeReset_Daily", typeof(DateTime));
+            lastDateTimeReset_WeeklyWednesday = (DateTime)info.GetValue("LastDateTimeReset_WeeklyWednesday", typeof(DateTime));
+            lastDateTimeReset_WeeklySunday = (DateTime)info.GetValue("LastDateTimeReset_WeeklySunday", typeof(DateTime));
         }//end of profile xml deserial
     }//end of Profile class
 

@@ -24,10 +24,10 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="15"/>
             <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="15"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Menu x:Name="_menu"
               Grid.Column="0"
@@ -51,7 +51,7 @@
                 <MenuItem x:Name="MenuItem_About" Header="About" Click="MenuItem_About_Click"/>
             </MenuItem>
         </Menu>
-        <TextBlock Text="Profile Loaded:"
+        <!--<TextBlock Text="Profile Loaded:"
                    Grid.Column="1"
                    Grid.Row="1"
                    VerticalAlignment="Center"
@@ -64,7 +64,7 @@
                    Margin="10 0 0 0"
                    Grid.ColumnSpan="1">
             <Run Text="{Binding ProfileName}"/>
-        </TextBlock>
+        </TextBlock>-->
         <TextBlock Text="Early Game"
                    Grid.Column="1"
                    Grid.Row="2"/>
@@ -302,7 +302,7 @@
                         Grid.Column="4"
                         Grid.Row="3">
             <Border x:Name="Border_4_1"
-                Grid.Column="1"
+                Grid.Column="4"
                 Grid.Row="3"
                 Margin="1">
                 <StackPanel x:Name="StackPanel_4_1">
@@ -323,7 +323,54 @@
                     <CheckBox Name="chbx_esfQuests" Content="Esfera Daily Quests" IsChecked="{Binding EsfQuests, Mode=TwoWay}"/>
                 </StackPanel>
             </Border>
+            <!--<Border x:Name="Border_4_2"
+                    Grid.Column="2">
+                <StackPanel x:Name="StackPanel_4_2">
+                    <TextBlock Text="Last Time Reset Daily"/>
+                    <TextBlock Text="{Binding LastDateTimeReset_Daily}"/>
+                    <TextBlock Text="Last Time Reset Weekly Wednesday"/>
+                    <TextBlock Text="{Binding LastDateTimeReset_WeeklyWednesday}"/>
+                    <TextBlock Text="Last Time Reset Weekly Sunday"/>
+                    <TextBlock Text="{Binding LastDateTimeReset_WeeklySunday}"/>
+                </StackPanel>
+            </Border>-->
         </StackPanel>
+        <Grid x:Name="StatusBar_Grid_1"
+                  Grid.Row="5"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="22"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="15"/>
+            </Grid.ColumnDefinitions>
+            <StatusBar x:Name="StatusBar_1"
+                   Grid.Row="4"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="6">
+            </StatusBar>
+            <TextBlock Grid.Column="1"
+                       VerticalAlignment="Center">
+                <Run Text="Profile: "/>
+                <Run x:Name="statusbar_Profile"
+                     Text="{Binding ProfileName}"/>
+            </TextBlock>
+            <TextBlock Grid.Column="2"
+                       VerticalAlignment="Center">
+                <Run Text="Current File: "/>
+                <Run x:Name="statusbar_CurrentFile"/>
+            </TextBlock>
+            <TextBlock Grid.Column="3"
+                       VerticalAlignment="Center">
+                <Run Text="Status: "/>
+                <Run x:Name="statusbar_Status"/>
+            </TextBlock>
+        </Grid>
         <!--</Border>-->
     </Grid>
 </Window>
