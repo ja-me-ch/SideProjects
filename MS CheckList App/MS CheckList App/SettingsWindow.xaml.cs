@@ -70,6 +70,26 @@ namespace MS_CheckList_App
         public SettingsWindow()
         {
             InitializeComponent();
+
+            //Set Profile Name
+            txbx_ChangeProfileName.Text = MainWindow.profileLoaded.ProfileName;
+
+            //Initialize Item Sources
+            cmbbx_WeeklyResetBoss.ItemsSource = listOfWeekdays;
+            cmbbx_WeeklyResetQuests.ItemsSource = listOfWeekdays;
+            cmbbx_DailyResetTimeHours.ItemsSource = listOfHours;
+            cmbbx_DailyResetTimeMinutes.ItemsSource = listOfMinutes;
+
+            //Set Default Values
+            cmbbx_DailyResetTimeHours.SelectedIndex = 0;
+            cmbbx_DailyResetTimeMinutes.SelectedIndex = 0;
+            cmbbx_WeeklyResetBoss.SelectedIndex = 0;
+            cmbbx_WeeklyResetQuests.SelectedIndex = 0;
+
+            //Load in App Config Settings
+            cmbbx_WeeklyResetBoss.SelectedItem = Properties.Settings.Default.WeeklyBossResetDay;
+            cmbbx_WeeklyResetQuests.SelectedItem = Properties.Settings.Default.WeeklyQuestResetDay;
+
             string time = Properties.Settings.Default.DailyResetTime;
             string hour, minute;
             if (time.Length >= 5)
@@ -78,17 +98,7 @@ namespace MS_CheckList_App
                 minute = time.Substring(3, 2);
                 cmbbx_DailyResetTimeHours.SelectedItem = hour;
                 cmbbx_DailyResetTimeMinutes.SelectedItem = minute;
-            }
-
-
-            cmbbx_WeeklyResetBoss.SelectedItem = Properties.Settings.Default.WeeklyBossResetDay;
-            cmbbx_WeeklyResetQuests.SelectedItem = Properties.Settings.Default.WeeklyQuestResetDay;
-
-            txbx_ChangeProfileName.Text = MainWindow.profileLoaded.ProfileName;
-            cmbbx_WeeklyResetBoss.ItemsSource = listOfWeekdays;
-            cmbbx_WeeklyResetQuests.ItemsSource = listOfWeekdays;
-            cmbbx_DailyResetTimeHours.ItemsSource = listOfHours;
-            cmbbx_DailyResetTimeMinutes.ItemsSource = listOfMinutes;
+            }//end of if
 
         }//end of SettingsWindow constructor
 
