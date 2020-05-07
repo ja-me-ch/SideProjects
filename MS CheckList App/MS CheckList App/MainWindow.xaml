@@ -89,9 +89,9 @@
                 Grid.Row="3"
                 Margin="1">
                 <StackPanel x:Name="StackPanel_1_1">
-                    <RadioButton Name="rb_eZak" Content="Easy Zakum" IsChecked="{Binding EZak, Mode=TwoWay}" GroupName="Zakum"/>
-                    <RadioButton Name="rb_nZak" Content="Normal Zakum" IsChecked="{Binding NZak, Mode=TwoWay}" GroupName="Zakum"/>
-                    <CheckBox Name="cb_cZak" Content="Chaos Zakum" IsChecked="{Binding CZak, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_eZak" Content="Easy Zakum" IsChecked="{Binding EZak, Mode=TwoWay}" Click="chbx_eZak_Click"/>
+                    <CheckBox Name="chbx_nZak" Content="Normal Zakum" IsChecked="{Binding NZak, Mode=TwoWay}" Click="chbx_nZak_Click"/>
+                    <CheckBox Name="chbx_cZak" Content="Chaos Zakum" IsChecked="{Binding CZak, Mode=TwoWay}"/>
                 </StackPanel>
             </Border>
             <Border x:Name="Border_1_2"
@@ -99,9 +99,9 @@
                 Grid.Row="4"
                 Margin="1">
                 <StackPanel x:Name="StackPanel_1_2">
-                    <RadioButton Name="rb_eVLeon" Content="Easy VonLeon" IsChecked="{Binding EVLeon, Mode=TwoWay}" GroupName="VonLeon"/>
-                    <RadioButton Name="rb_nVLeon" Content="Normal VonLeon" IsChecked="{Binding NVLeon, Mode=TwoWay}" GroupName="VonLeon"/>
-                    <RadioButton Name="rb_hVLeon" Content="Hard VonLeon" IsChecked="{Binding HVLeon, Mode=TwoWay}" GroupName="VonLeon"/>
+                    <CheckBox Name="chbx_eVLeon" Content="Easy VonLeon" IsChecked="{Binding EVLeon, Mode=TwoWay}" Click="chbx_eVLeon_Click"/>
+                    <CheckBox Name="chbx_nVLeon" Content="Normal VonLeon" IsChecked="{Binding NVLeon, Mode=TwoWay}" Click="chbx_nVLeon_Click"/>
+                    <CheckBox Name="chbx_hVLeon" Content="Hard VonLeon" IsChecked="{Binding HVLeon, Mode=TwoWay}" Click="chbx_hVLeon_Click"/>
                 </StackPanel>
             </Border>
             <Border x:Name="Border_1_3"
@@ -109,9 +109,9 @@
                 Grid.Row="4"
                 Margin="1">
                 <StackPanel x:Name="StackPanel_1_3">
-                    <RadioButton Name="rb_eHTail" Content="Easy Horntail" IsChecked="{Binding EHTail, Mode=TwoWay}" GroupName="Horntail"/>
-                    <RadioButton Name="rb_nHTail" Content="Normal Horntail" IsChecked="{Binding NHTail, Mode=TwoWay}" GroupName="Horntail"/>
-                    <RadioButton Name="rb_cHTail" Content="Hard Horntail" IsChecked="{Binding CHTail, Mode=TwoWay}" GroupName="Horntail"/>
+                    <CheckBox Name="chbx_eHTail" Content="Easy Horntail" IsChecked="{Binding EHTail, Mode=TwoWay}" Click="chbx_eHTail_Click"/>
+                    <CheckBox Name="chbx_nHTail" Content="Normal Horntail" IsChecked="{Binding NHTail, Mode=TwoWay}" Click="chbx_nHTail_Click"/>
+                    <CheckBox Name="chbx_cHTail" Content="Chaos Horntail" IsChecked="{Binding CHTail, Mode=TwoWay}" Click="chbx_cHTail_Click"/>
                 </StackPanel>
             </Border>
             <Border x:Name="Border_1_4"
@@ -119,8 +119,8 @@
                 Grid.Row="4"
                 Margin="1">
                 <StackPanel x:Name="StackPanel_1_4">
-                    <RadioButton Name="rb_eArk" Content="Easy Arkarium" IsChecked="{Binding EArk, Mode=TwoWay}" GroupName="Arkarium"/>
-                    <RadioButton Name="rb_nArk" Content="Normal Arkarium" IsChecked="{Binding NArk, Mode=TwoWay}" GroupName="Arkarium"/>
+                    <CheckBox Name="chbx_eArk" Content="Easy Arkarium" IsChecked="{Binding EArk, Mode=TwoWay}" Click="chbx_eArk_Click"/>
+                    <CheckBox Name="chbx_nArk" Content="Normal Arkarium" IsChecked="{Binding NArk, Mode=TwoWay}" Click="chbx_nArk_Click"/>
                 </StackPanel>
             </Border>
             <Border x:Name="Border_1_5"
@@ -128,8 +128,8 @@
                 Grid.Row="4"
                 Margin="1">
                 <StackPanel x:Name="StackPanel_1_5">
-                    <RadioButton Name="rb_nRanmaru" Content="Normal Ranmaru" IsChecked="{Binding NRanmaru, Mode=TwoWay}" GroupName="Ranmaru"/>
-                    <RadioButton Name="rb_hRanmaru" Content="Hard Ranmaru" IsChecked="{Binding HRanmaru, Mode=TwoWay}" GroupName="Ranmaru"/>
+                    <CheckBox Name="chbx_nRanmaru" Content="Normal Ranmaru" IsChecked="{Binding NRanmaru, Mode=TwoWay}" Click="chbx_nRanmaru_Click"/>
+                    <CheckBox Name="chbx_hRanmaru" Content="Hard Ranmaru" IsChecked="{Binding HRanmaru, Mode=TwoWay}" Click="chbx_hRanmaru_Click"/>
                 </StackPanel>
             </Border>
             <Border x:Name="Border_1_6"
@@ -137,8 +137,8 @@
                 Grid.Row="4"
                 Margin="1">
                 <StackPanel x:Name="StackPanel_1_6">
-                    <RadioButton Name="rb_nHilla" Content="Normal Hilla" IsChecked="{Binding NHilla, Mode=TwoWay}" GroupName="Hilla"/>
-                    <RadioButton Name="rb_hHilla" Content="Hard Hilla" IsChecked="{Binding HHilla, Mode=TwoWay}" GroupName="Hilla"/>
+                    <CheckBox Name="chbx_nHilla" Content="Normal Hilla" IsChecked="{Binding NHilla, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_hHilla" Content="Hard Hilla" IsChecked="{Binding HHilla, Mode=TwoWay}"/>
                 </StackPanel>
             </Border>
             <Border x:Name="Border_1_7"
@@ -146,8 +146,8 @@
                 Grid.Row="4"
                 Margin="1">
                 <StackPanel x:Name="StackPanel_1_7">
-                    <RadioButton Name="rb_eCygnus" Content="Easy Cygnus" IsChecked="{Binding ECygnus, Mode=TwoWay}" GroupName="Cygnus"/>
-                    <RadioButton Name="rb_nCygnus" Content="Normal Cygnus" IsChecked="{Binding NCygnus, Mode=TwoWay}" GroupName="Cygnus"/>
+                    <CheckBox Name="chbx_eCygnus" Content="Easy Cygnus" IsChecked="{Binding ECygnus, Mode=TwoWay}" Click="chbx_eCygnus_Click"/>
+                    <CheckBox Name="chbx_nCygnus" Content="Normal Cygnus" IsChecked="{Binding NCygnus, Mode=TwoWay}" Click="chbx_nCygnus_Click"/>
                 </StackPanel>
             </Border>
             <Border>
@@ -203,8 +203,8 @@
                 Grid.Row="3"
                 Margin="1">
                 <StackPanel x:Name="StackPanel_2_4">
-                    <RadioButton Name="rb_eMagnus" Content="Easy Magnus" IsChecked="{Binding EMagnus, Mode=TwoWay}" GroupName="Magnus"/>
-                    <RadioButton Name="rb_nMagnus" Content="Normal Magnus" IsChecked="{Binding NMagnus, Mode=TwoWay}" GroupName="Magnus"/>
+                    <CheckBox Name="chbx_eMagnus" Content="Easy Magnus" IsChecked="{Binding EMagnus, Mode=TwoWay}" Click="chbx_eMagnus_Click"/>
+                    <CheckBox Name="chbx_nMagnus" Content="Normal Magnus" IsChecked="{Binding NMagnus, Mode=TwoWay}" Click="chbx_nMagnus_Click"/>
                     <CheckBox Name="chbx_hMagnus" Content="Hard Magnus" IsChecked="{Binding HMagnus, Mode=TwoWay}"/>
                 </StackPanel>
             </Border>
@@ -237,8 +237,8 @@
                 Grid.Row="3"
                 Margin="1">
                 <StackPanel x:Name="StackPanel_3_1">
-                    <RadioButton Name="rb_nLotus" Content="Normal Lotus" IsChecked="{Binding NLotus, Mode=TwoWay}" GroupName="Lotus"/>
-                    <RadioButton Name="rb_hLotus" Content="Hard Lotus" IsChecked="{Binding HLotus, Mode=TwoWay}" GroupName="Lotus"/>
+                    <CheckBox Name="chbx_nLotus" Content="Normal Lotus" IsChecked="{Binding NLotus, Mode=TwoWay}" Click="chbx_nLotus_Click"/>
+                    <CheckBox Name="chbx_hLotus" Content="Hard Lotus" IsChecked="{Binding HLotus, Mode=TwoWay}" Click="chbx_hLotus_Click"/>
                 </StackPanel>
             </Border>
             <Border x:Name="Border_3_2"
@@ -246,8 +246,8 @@
                 Grid.Row="3"
                 Margin="1">
                 <StackPanel x:Name="StackPanel_3_2">
-                    <RadioButton Name="rb_nDamien" Content="Normal Damien" IsChecked="{Binding NDamien, Mode=TwoWay}" GroupName="Damien"/>
-                    <RadioButton Name="rb_hDamien" Content="Hard Damien" IsChecked="{Binding HDamien, Mode=TwoWay}" GroupName="Damien"/>
+                    <CheckBox Name="chbx_nDamien" Content="Normal Damien" IsChecked="{Binding NDamien, Mode=TwoWay}" Click="chbx_nDamien_Click"/>
+                    <CheckBox Name="chbx_hDamien" Content="Hard Damien" IsChecked="{Binding HDamien, Mode=TwoWay}" Click="chbx_hDamien_Click"/>
                 </StackPanel>
             </Border>
             <Border x:Name="Border_3_3"
@@ -255,8 +255,8 @@
                 Grid.Row="3"
                 Margin="1">
                 <StackPanel x:Name="StackPanel_3_3">
-                    <RadioButton Name="rb_nLucid" Content="Normal Lucid" IsChecked="{Binding NLucid, Mode=TwoWay}" GroupName="Lucid"/>
-                    <RadioButton Name="rb_hLucid" Content="Hard Lucid" IsChecked="{Binding HLucid, Mode=TwoWay}" GroupName="Lucid"/>
+                    <CheckBox Name="chbx_nLucid" Content="Normal Lucid" IsChecked="{Binding NLucid, Mode=TwoWay}" Click="chbx_nLucid_Click"/>
+                    <CheckBox Name="chbx_hLucid" Content="Hard Lucid" IsChecked="{Binding HLucid, Mode=TwoWay}" Click="chbx_hLucid_Click"/>
                 </StackPanel>
             </Border>
             <Border x:Name="Border_3_4"
@@ -264,8 +264,8 @@
                 Grid.Row="3"
                 Margin="1">
                 <StackPanel x:Name="StackPanel_3_4">
-                    <RadioButton Name="rb_nWill" Content="Normal Will" IsChecked="{Binding NWill, Mode=TwoWay}" GroupName="Will"/>
-                    <RadioButton Name="rb_hWill" Content="Hard Will" IsChecked="{Binding HWill, Mode=TwoWay}" GroupName="Will"/>
+                    <CheckBox Name="chbx_nWill" Content="Normal Will" IsChecked="{Binding NWill, Mode=TwoWay}" Click="chbx_nWill_Click"/>
+                    <CheckBox Name="chbx_hWill" Content="Hard Will" IsChecked="{Binding HWill, Mode=TwoWay}" Click="chbx_hWill_Click"/>
                 </StackPanel>
             </Border>
             <Border x:Name="Border_3_5"
@@ -354,13 +354,13 @@
                    Grid.Column="0"
                    Grid.ColumnSpan="6">
             </StatusBar>
-            <TextBlock Grid.Column="1"
+            <!--<TextBlock Grid.Column="1"
                        VerticalAlignment="Center">
                 <Run Text="Profile: "/>
                 <Run x:Name="statusbar_Profile"
                      Text="{Binding ProfileName}"/>
-            </TextBlock>
-            <TextBlock Grid.Column="2"
+            </TextBlock>-->
+            <TextBlock Grid.Column="1"
                        VerticalAlignment="Center">
                 <Run Text="Current File: "/>
                 <Run x:Name="statusbar_CurrentFile"/>
