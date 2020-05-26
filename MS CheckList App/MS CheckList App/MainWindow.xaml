@@ -37,8 +37,12 @@
                 <MenuItem x:Name="MenuItem_New"  Header="New" Click="MenuItem_New_Click"/>
                 <MenuItem x:Name="MenuItem_Load" Header="Load" Click="MenuItem_Load_Click"/>
                 <MenuItem x:Name="MenuItem_Save" Header="Save" Click="MenuItem_Save_Click" />
-                <MenuItem x:Name="MenuItem_Settings" Header="Settings" Click="MenuItem_Settings_Click"/>
+                <!--<MenuItem x:Name="MenuItem_Settings" Header="Settings" Click="MenuItem_Settings_Click"/>-->
                 <MenuItem x:Name="MenuItem_Exit" Header="Exit" Click="MenuItem_Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Profile">
+                <MenuItem x:Name="MenuItem_AutoSave" Header="Auto Save" IsChecked="{Binding AutoSave, Mode=TwoWay}" Click="MenuItem_AutoSave_Click" />
+                <MenuItem x:Name="MenuItem_AutoReset" Header="Auto Reset" IsChecked="{Binding AutoReset, Mode=TwoWay}" Click="MenuItem_AutoReset_Click" />
             </MenuItem>
             <MenuItem Header="Tools">
                 <MenuItem x:Name="MenuItem_ResetAll" Header="Reset All" Click="MenuItem_ResetAll_Click"/>
@@ -91,7 +95,7 @@
                 <StackPanel x:Name="StackPanel_1_1">
                     <CheckBox Name="chbx_eZak" Content="Easy Zakum" IsChecked="{Binding EZak, Mode=TwoWay}" Click="chbx_eZak_Click"/>
                     <CheckBox Name="chbx_nZak" Content="Normal Zakum" IsChecked="{Binding NZak, Mode=TwoWay}" Click="chbx_nZak_Click"/>
-                    <CheckBox Name="chbx_cZak" Content="Chaos Zakum" IsChecked="{Binding CZak, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_cZak" Content="Chaos Zakum" IsChecked="{Binding CZak, Mode=TwoWay}" Click="chbx_cZak_Click"/>
                 </StackPanel>
             </Border>
             <Border x:Name="Border_1_2"
@@ -137,8 +141,8 @@
                 Grid.Row="4"
                 Margin="1">
                 <StackPanel x:Name="StackPanel_1_6">
-                    <CheckBox Name="chbx_nHilla" Content="Normal Hilla" IsChecked="{Binding NHilla, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_hHilla" Content="Hard Hilla" IsChecked="{Binding HHilla, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_nHilla" Content="Normal Hilla" IsChecked="{Binding NHilla, Mode=TwoWay}" Click="chbx_nHilla_Click"/>
+                    <CheckBox Name="chbx_hHilla" Content="Hard Hilla" IsChecked="{Binding HHilla, Mode=TwoWay}" Click="chbx_hHilla_Click"/>
                 </StackPanel>
             </Border>
             <Border x:Name="Border_1_7"
@@ -152,8 +156,8 @@
             </Border>
             <Border>
                 <StackPanel x:Name="StackPanel_1_8">
-                    <CheckBox Name="chbx_dojDojo" Content="Mulung Dojo" IsChecked="{Binding DojDojo, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_mpMonsterPark" Content="Monster Park" IsChecked="{Binding MpMonsterPark, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_dojDojo" Content="Mulung Dojo" IsChecked="{Binding DojDojo, Mode=TwoWay}" Click="chbx_dojDojo_Click"/>
+                    <CheckBox Name="chbx_mpMonsterPark" Content="Monster Park" IsChecked="{Binding MpMonsterPark, Mode=TwoWay}" Click="chbx_mpMonsterPark_Click"/>
                 </StackPanel>
             </Border>
         </StackPanel>
@@ -171,10 +175,10 @@
                 Margin="1">
                 <StackPanel x:Name="StackPanel_2_1">
                     <TextBlock Name="lb_RootAbyss" Text="Root Abyss"/>
-                    <CheckBox Name="chbx_nCQueen" Content="Crimson Queen" IsChecked="{Binding NCQueen, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_nPierre" Content="Pierre" IsChecked="{Binding NPierre, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_nVonBon" Content="Von Bon" IsChecked="{Binding NVonBon, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_nVellum" Content="Vellum" IsChecked="{Binding NVellum, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_nCQueen" Content="Crimson Queen" IsChecked="{Binding NCQueen, Mode=TwoWay}" Click="chbx_nCQueen_Click"/>
+                    <CheckBox Name="chbx_nPierre" Content="Pierre" IsChecked="{Binding NPierre, Mode=TwoWay}" Click="chbx_nPierre_Click"/>
+                    <CheckBox Name="chbx_nVonBon" Content="Von Bon" IsChecked="{Binding NVonBon, Mode=TwoWay}" Click="chbx_nVonBon_Click"/>
+                    <CheckBox Name="chbx_nVellum" Content="Vellum" IsChecked="{Binding NVellum, Mode=TwoWay}" Click="chbx_nVellum_Click"/>
                 </StackPanel>
             </Border>
             <Border x:Name="Border_2_2"
@@ -183,10 +187,10 @@
                 Margin="1">
                 <StackPanel x:Name="StackPanel_2_2">
                     <TextBlock Name="lb_ChaosRootAbyss" Text="Chaos Root Abyss"/>
-                    <CheckBox Name="chbx_cCQueen" Content="Crimson Queen" IsChecked="{Binding CCQueen, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_cPierre" Content="Pierre" IsChecked="{Binding CPierre, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_cVonBon" Content="Von Bon" IsChecked="{Binding CVonBon, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_cVellum" Content="Vellum" IsChecked="{Binding CVellum, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_cCQueen" Content="Crimson Queen" IsChecked="{Binding CCQueen, Mode=TwoWay}" Click="chbx_cCQueen_Click"/>
+                    <CheckBox Name="chbx_cPierre" Content="Pierre" IsChecked="{Binding CPierre, Mode=TwoWay}" Click="chbx_cPierre_Click"/>
+                    <CheckBox Name="chbx_cVonBon" Content="Von Bon" IsChecked="{Binding CVonBon, Mode=TwoWay}" Click="chbx_cVonBon_Click"/>
+                    <CheckBox Name="chbx_cVellum" Content="Vellum" IsChecked="{Binding CVellum, Mode=TwoWay}" Click="chbx_cVellum_Click"/>
                 </StackPanel>
             </Border>
             <Border x:Name="Border_2_3"
@@ -194,8 +198,8 @@
                 Grid.Row="3"
                 Margin="1">
                 <StackPanel x:Name="StackPanel_2_3">
-                    <CheckBox Name="chbx_nPinkBean" Content="Normal Pink Bean" IsChecked="{Binding NPinkBean, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_cPinkBean" Content="Chaos Pink Bean" IsChecked="{Binding CPinkBean, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_nPinkBean" Content="Normal Pink Bean" IsChecked="{Binding NPinkBean, Mode=TwoWay}" Click="chbx_nPinkBean_Click"/>
+                    <CheckBox Name="chbx_cPinkBean" Content="Chaos Pink Bean" IsChecked="{Binding CPinkBean, Mode=TwoWay}" Click="chbx_cPinkBean_Click"/>
                 </StackPanel>
             </Border>
             <Border x:Name="Border_2_4"
@@ -205,7 +209,7 @@
                 <StackPanel x:Name="StackPanel_2_4">
                     <CheckBox Name="chbx_eMagnus" Content="Easy Magnus" IsChecked="{Binding EMagnus, Mode=TwoWay}" Click="chbx_eMagnus_Click"/>
                     <CheckBox Name="chbx_nMagnus" Content="Normal Magnus" IsChecked="{Binding NMagnus, Mode=TwoWay}" Click="chbx_nMagnus_Click"/>
-                    <CheckBox Name="chbx_hMagnus" Content="Hard Magnus" IsChecked="{Binding HMagnus, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_hMagnus" Content="Hard Magnus" IsChecked="{Binding HMagnus, Mode=TwoWay}" Click="chbx_hMagnus_Click"/>
                 </StackPanel>
             </Border>
             <Border x:Name="Border_2_5"
@@ -213,14 +217,10 @@
                 Grid.Row="3"
                 Margin="1">
                 <StackPanel x:Name="StackPanel_2_5">
-                    <CheckBox Name="chbx_Gollux" Content="Gollux" IsChecked="{Binding Gollux, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_Ursus" Content="Ursus" IsChecked="{Binding Ursus, Mode=TwoWay}"/>
-                </StackPanel>
-            </Border>
-            <Border>
-                <StackPanel>
-                    <CheckBox Name="chbx_legQuests" Content="Legion Dailies" IsChecked="{Binding LegQuests, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_MapleTour" Content="Maple Tour" IsChecked="{Binding MapleTour, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_Gollux" Content="Gollux" IsChecked="{Binding Gollux, Mode=TwoWay}" Click="chbx_Gollux_Click"/>
+                    <CheckBox Name="chbx_Ursus" Content="Ursus" IsChecked="{Binding Ursus, Mode=TwoWay}" Click="chbx_Ursus_Click"/>
+                    <CheckBox Name="chbx_legQuests" Content="Legion Dailies" IsChecked="{Binding LegQuests, Mode=TwoWay}" Click="chbx_legQuests_Click"/>
+                    <CheckBox Name="chbx_MapleTour" Content="Maple Tour" IsChecked="{Binding MapleTour, Mode=TwoWay}" Click="chbx_MapleTour_Click"/>
                 </StackPanel>
             </Border>
         </StackPanel>
@@ -274,10 +274,10 @@
                 Margin="1">
                 <StackPanel x:Name="StackPanel_3_5">
                     <TextBlock Text="Tenebris Bosses"/>
-                    <CheckBox Name="chbx_nGloom" Content="Gloom" IsChecked="{Binding NGloom, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_hVHilla" Content="Verus Hilla" IsChecked="{Binding HVHilla, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_nDarknell" Content="Darknell" IsChecked="{Binding NDarknell, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_hBlackMage" Content="Black Mage" IsChecked="{Binding HBlackMage, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_nGloom" Content="Gloom" IsChecked="{Binding NGloom, Mode=TwoWay}" Click="chbx_nGloom_Click"/>
+                    <CheckBox Name="chbx_hVHilla" Content="Verus Hilla" IsChecked="{Binding HVHilla, Mode=TwoWay}" Click="chbx_hVHilla_Click"/>
+                    <CheckBox Name="chbx_nDarknell" Content="Darknell" IsChecked="{Binding NDarknell, Mode=TwoWay}" Click="chbx_nDarknell_Click"/>
+                    <CheckBox Name="chbx_hBlackMage" Content="Black Mage" IsChecked="{Binding HBlackMage, Mode=TwoWay}" Click="chbx_hBlackMage_Click"/>
                 </StackPanel>
             </Border>
             <Border x:Name="Border_3_6"
@@ -286,10 +286,10 @@
                 Margin="1">
                 <StackPanel x:Name="StackPanel_3_6">
                     <TextBlock Text="Misc."/>
-                    <CheckBox Name="chbx_comVoyages" Content="Commerci Voyages" IsChecked="{Binding ComVoyages, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_comPQ" Content="Commerci PQ (MTU)" IsChecked="{Binding ComPQ, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_syQuests" Content="Scrapyard Quests" IsChecked="{Binding SyQuests, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_dwtQuests" Content="Dark World Tree Quests" IsChecked="{Binding DwtQuests, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_comVoyages" Content="Commerci Voyages" IsChecked="{Binding ComVoyages, Mode=TwoWay}" Click="chbx_comVoyages_Click"/>
+                    <CheckBox Name="chbx_comPQ" Content="Commerci PQ (MTU)" IsChecked="{Binding ComPQ, Mode=TwoWay}" Click="chbx_comPQ_Click"/>
+                    <CheckBox Name="chbx_syQuests" Content="Scrapyard Quests" IsChecked="{Binding SyQuests, Mode=TwoWay}" Click="chbx_syQuests_Click"/>
+                    <CheckBox Name="chbx_dwtQuests" Content="Dark World Tree Quests" IsChecked="{Binding DwtQuests, Mode=TwoWay}" Click="chbx_dwtQuests_Click"/>
                 </StackPanel>
             </Border>
         </StackPanel>
@@ -307,20 +307,20 @@
                 Margin="1">
                 <StackPanel x:Name="StackPanel_4_1">
                     <TextBlock Text="Vanishing Journey"/>
-                    <CheckBox Name="chbx_vjQuests" Content="Daily Quests" IsChecked="{Binding VjQuests, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_vjErdaSpectrum" Content="Erda Spectrum" IsChecked="{Binding VjErdaSpectrum, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_vjQuests" Content="Daily Quests" IsChecked="{Binding VjQuests, Mode=TwoWay}" Click="chbx_vjQuests_Click"/>
+                    <CheckBox Name="chbx_vjErdaSpectrum" Content="Erda Spectrum" IsChecked="{Binding VjErdaSpectrum, Mode=TwoWay}" Click="chbx_vjErdaSpectrum_Click"/>
                     <TextBlock Text="Chu Chu Island"/>
-                    <CheckBox Name="chbx_chuchuQuests" Content="Daily Quests" IsChecked="{Binding ChuchuQuests, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_chuchuHMuto" Content="Hungry Muto" IsChecked="{Binding ChuchuHMuto, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_chuchuQuests" Content="Daily Quests" IsChecked="{Binding ChuchuQuests, Mode=TwoWay}" Click="chbx_chuchuQuests_Click"/>
+                    <CheckBox Name="chbx_chuchuHMuto" Content="Hungry Muto" IsChecked="{Binding ChuchuHMuto, Mode=TwoWay}" Click="chbx_chuchuHMuto_Click"/>
                     <TextBlock Text="Lachelein"/>
-                    <CheckBox Name="chbx_lachQuests" Content="Daily Quests" IsChecked="{Binding LachQuests, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_lachDDefender" Content="Dream Defender" IsChecked="{Binding LachDDefender, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_lachQuests" Content="Daily Quests" IsChecked="{Binding LachQuests, Mode=TwoWay}" Click="chbx_lachQuests_Click"/>
+                    <CheckBox Name="chbx_lachDDefender" Content="Dream Defender" IsChecked="{Binding LachDDefender, Mode=TwoWay}" Click="chbx_lachDDefender_Click"/>
                     <TextBlock Text="Arcana"/>
-                    <CheckBox Name="chbx_arcQuests" Content="Daily Quests" IsChecked="{Binding ArcQuests, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_arcSSavior" Content="Spirit Savior" IsChecked="{Binding ArcSSavior, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_arcQuests" Content="Daily Quests" IsChecked="{Binding ArcQuests, Mode=TwoWay}" Click="chbx_arcQuests_Click"/>
+                    <CheckBox Name="chbx_arcSSavior" Content="Spirit Savior" IsChecked="{Binding ArcSSavior, Mode=TwoWay}" Click="chbx_arcSSavior_Click"/>
                     <TextBlock Text="Morass &amp; Esfera"/>
-                    <CheckBox Name="chbx_morQuests" Content="Morass Daily Quests" IsChecked="{Binding MorQuests, Mode=TwoWay}"/>
-                    <CheckBox Name="chbx_esfQuests" Content="Esfera Daily Quests" IsChecked="{Binding EsfQuests, Mode=TwoWay}"/>
+                    <CheckBox Name="chbx_morQuests" Content="Morass Daily Quests" IsChecked="{Binding MorQuests, Mode=TwoWay}" Click="chbx_morQuests_Click"/>
+                    <CheckBox Name="chbx_esfQuests" Content="Esfera Daily Quests" IsChecked="{Binding EsfQuests, Mode=TwoWay}" Click="chbx_esfQuests_Click"/>
                 </StackPanel>
             </Border>
             <!--<Border x:Name="Border_4_2"

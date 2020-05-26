@@ -12,6 +12,9 @@
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
         </Style>
+        <Style TargetType="CheckBox">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -30,14 +33,19 @@
             <RowDefinition Height="24"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Change Profile Name: "
+        <TextBlock Text="Auto Save:  "
                    Grid.Column="1"
                    Grid.Row="1"/>
-        <TextBox x:Name="txbx_ChangeProfileName"
-                 Grid.Row="1"
-                 Grid.Column="2"
-                 Height="24"
-                 Width="auto"/>
+        <CheckBox x:Name="chbx_AutoSave"
+                  Grid.Row="1"
+                  Grid.Column="2"/>
+        <TextBlock Text="Auto Reset:  "
+                   Grid.Column="1"
+                   Grid.Row="2"/>
+        <CheckBox x:Name="chbx_AutoReset"
+                  Grid.Row="2"
+                  Grid.Column="2"/>
+
         <Button x:Name="btn_SaveSettings"
                 Content="Save"
                 Grid.Column="2"
@@ -50,30 +58,6 @@
                 VerticalContentAlignment="Center"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"/>
-        <TextBlock Text="Daily Reset Time: "
-                   Grid.Column="1"
-                   Grid.Row="2"/>
-        <StackPanel Orientation="Horizontal"
-                    Grid.Row="2"
-                    Grid.Column="2">
-            <ComboBox x:Name="cmbbx_DailyResetTimeHours"
-                      Width="50"/>
-            <TextBlock Text=" : "
-                       FontSize="20"/>
-            <ComboBox x:Name="cmbbx_DailyResetTimeMinutes"
-                      Width="50"/>
-        </StackPanel>
-        <TextBlock Text="Weekly Boss Reset Day (Wed): "
-                   Grid.Column="1"
-                   Grid.Row="3"/>
-        <ComboBox x:Name="cmbbx_WeeklyResetBoss"
-                 Grid.Column="2"
-                 Grid.Row="3"/>
-        <TextBlock Text="Weekly Quest Reset Day (Sun): "
-                   Grid.Column="1"
-                   Grid.Row="4"/>
-        <ComboBox x:Name="cmbbx_WeeklyResetQuests"
-                 Grid.Column="2"
-                 Grid.Row="4"/>
+
     </Grid>
 </Window>

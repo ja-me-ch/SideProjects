@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.ComponentModel;
+using System.Diagnostics;
 
 namespace MS_CheckList_App
 {
@@ -22,6 +23,34 @@ namespace MS_CheckList_App
                     profileName = value;
                     OnPropertyChanged("ProfileName");
                 } 
+            }
+        }
+
+        private Boolean autoReset;
+        public Boolean AutoReset
+        {
+            get { return autoReset; }
+            set 
+            {
+                if (autoReset != value) 
+                {
+                    autoReset = value;
+                    OnPropertyChanged("AutoReset");
+                }
+            }
+        }
+
+        private Boolean autoSave;
+        public Boolean AutoSave
+        {
+            get { return autoSave; }
+            set
+            {
+                if (autoSave != value)
+                {
+                    autoSave = value;
+                    OnPropertyChanged("AutoSave");
+                }
             }
         }
         public String description { get; set; }
@@ -139,6 +168,7 @@ namespace MS_CheckList_App
         private Boolean syQuests;
         private Boolean dwtQuests;
 
+        #region CheckBox Data
         //Boss Data
         //Zakum
         public Boolean EZak //Daily
@@ -944,6 +974,7 @@ namespace MS_CheckList_App
                 }
             }
         }
+        #endregion
 
         public void OnPropertyChanged(string propertyName)
         {
@@ -1002,7 +1033,7 @@ namespace MS_CheckList_App
             ArcSSavior = false;
             MorQuests = false;
             EsfQuests = false;
-            LastDateTimeReset_Daily = DateTime.Now;
+            LastDateTimeReset_Daily = DateTime.UtcNow;
         }//end of ResetDaily
 
         public void ResetWeeklyWednesday()
@@ -1028,7 +1059,7 @@ namespace MS_CheckList_App
             HVHilla = false;
             NDarknell = false;
             HBlackMage = false;
-            LastDateTimeReset_WeeklyWednesday = DateTime.Now;
+            LastDateTimeReset_WeeklyWednesday = DateTime.UtcNow;
         }
 
         public void ResetWeeklySunday()
@@ -1036,12 +1067,14 @@ namespace MS_CheckList_App
             DojDojo = false;
             SyQuests = false;
             DwtQuests = false;
-            LastDateTimeReset_WeeklySunday = DateTime.Now;
+            LastDateTimeReset_WeeklySunday = DateTime.UtcNow;
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("Profile Name", ProfileName);
+            info.AddValue("Auto Reset", autoReset);
+            info.AddValue("Auto Save", autoSave);
             info.AddValue("Easy Zakum", eZak);
             info.AddValue("Normal Zakum", nZak);
             info.AddValue("Chaos Zakum", cZak);
@@ -1112,6 +1145,8 @@ namespace MS_CheckList_App
         public Profile(SerializationInfo info, StreamingContext context)
         {
             ProfileName = (string)info.GetValue("Profile Name", typeof(string));
+            autoReset = (bool)info.GetValue("Auto Reset", typeof(bool));
+            autoSave = (bool)info.GetValue("Auto Save", typeof(bool));
             eZak = (bool)info.GetValue("Easy Zakum", typeof(bool));
             nZak = (bool)info.GetValue("Normal Zakum", typeof(bool));
             cZak = (bool)info.GetValue("Chaos Zakum", typeof(bool));

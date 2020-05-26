@@ -19,108 +19,21 @@ namespace MS_CheckList_App
     /// </summary>
     public partial class SettingsWindow : Window
     {
-        public List<string> listOfWeekdays = new List<string> 
-        { 
-            "Sunday",
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday"
-        };
-
-        public List<string> listOfHours = new List<string>
-        {
-            "00",
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23"
-        };
-
-        public List<string> listOfMinutes = new List<string>
-        {
-            "00",
-            "15",
-            "30",
-            "45"
-        };
-
-
         public SettingsWindow()
         {
             InitializeComponent();
 
             //Set Profile Name
-            txbx_ChangeProfileName.Text = MainWindow.profileLoaded.ProfileName;
-
-            //Initialize Item Sources
-            cmbbx_WeeklyResetBoss.ItemsSource = listOfWeekdays;
-            cmbbx_WeeklyResetQuests.ItemsSource = listOfWeekdays;
-            cmbbx_DailyResetTimeHours.ItemsSource = listOfHours;
-            cmbbx_DailyResetTimeMinutes.ItemsSource = listOfMinutes;
-
-            //Set Default Values
-            cmbbx_DailyResetTimeHours.SelectedIndex = 0;
-            cmbbx_DailyResetTimeMinutes.SelectedIndex = 0;
-            cmbbx_WeeklyResetBoss.SelectedIndex = 0;
-            cmbbx_WeeklyResetQuests.SelectedIndex = 0;
-
-            //Load in App Config Settings
-            cmbbx_WeeklyResetBoss.SelectedItem = Properties.Settings.Default.WeeklyBossResetDay;
-            cmbbx_WeeklyResetQuests.SelectedItem = Properties.Settings.Default.WeeklyQuestResetDay;
-
-            string time = Properties.Settings.Default.DailyResetTime;
-            string hour, minute;
-            if (time.Length >= 5)
-            {
-                hour = time.Substring(0, 2);
-                minute = time.Substring(3, 2);
-                cmbbx_DailyResetTimeHours.SelectedItem = hour;
-                cmbbx_DailyResetTimeMinutes.SelectedItem = minute;
-            }//end of if
+            chbx_AutoSave.IsChecked = MainWindow.profileLoaded.AutoSave;
+            chbx_AutoReset.IsChecked = MainWindow.profileLoaded.AutoReset;
 
         }//end of SettingsWindow constructor
 
         private void btn_SaveSettings_Click(object sender, RoutedEventArgs e)
         {
-            if (txbx_ChangeProfileName.Text != null)
-            {
-                string hour = cmbbx_DailyResetTimeHours.SelectedItem.ToString();
-                string minute = cmbbx_DailyResetTimeMinutes.SelectedItem.ToString();
-                string time = hour + ":" + minute;
-
-                MainWindow.profileLoaded.ProfileName = txbx_ChangeProfileName.Text;
-                Properties.Settings.Default.DailyResetTime = time;
-                Properties.Settings.Default.WeeklyQuestResetDay = cmbbx_WeeklyResetQuests.SelectedItem.ToString();
-                Properties.Settings.Default.WeeklyBossResetDay = cmbbx_WeeklyResetBoss.SelectedItem.ToString();
-                Properties.Settings.Default.Save();
-                this.Close();
-            }//end of if
-            else
-            {
-                MessageBox.Show("Profile name cannot be null.", "Error");
-            }
+            MainWindow.profileLoaded.AutoSave = (bool)chbx_AutoSave.IsChecked;
+            MainWindow.profileLoaded.AutoReset = (bool)chbx_AutoReset.IsChecked;
+            
         }//end of btn_SaveSettings_Click
     }//end of SettingsWindow partial class
 }//end of namespace
