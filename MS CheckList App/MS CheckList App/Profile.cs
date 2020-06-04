@@ -1041,6 +1041,7 @@ namespace MS_CheckList_App
             CZak = false;
             ECygnus = false;
             NCygnus = false;
+            HHilla = false;
             CCQueen = false;
             CPierre = false;
             CVonBon = false;

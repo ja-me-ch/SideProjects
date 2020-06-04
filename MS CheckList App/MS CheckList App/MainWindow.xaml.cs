@@ -68,8 +68,12 @@ namespace MS_CheckList_App
                 int compareDaily = DateTime.Compare(NextDailyResetDateTime(), last_DailyReset);
                 if (compareDaily == 1) //daily reset is later than last_DailyReset
                 {
-                    Task.Run (()=> {
-                        WaitForDailyReset();
+                    Task.Run(() =>
+                    {
+                        while (true)
+                        {
+                            WaitForDailyReset();
+                        }
                     });
                 }//end of if
                 else
@@ -82,7 +86,10 @@ namespace MS_CheckList_App
                 {
                     Task.Run(() =>
                     {
-                        WaitForWedWeeklyReset();
+                        while (true)
+                        {
+                            WaitForWedWeeklyReset();
+                        }
                     });
                 }//end of if
                 else
@@ -95,7 +102,10 @@ namespace MS_CheckList_App
                 {
                     Task.Run(() =>
                     {
-                        WaitForSunWeeklyReset();
+                        while (true)
+                        {
+                            WaitForSunWeeklyReset();
+                        }
                     });
                 }//end of if
                 else
@@ -106,7 +116,7 @@ namespace MS_CheckList_App
             }//end of if
             else
             {
-                
+
             }//end of else
 
         }//end of wait for reset
@@ -133,23 +143,37 @@ namespace MS_CheckList_App
         {
             DateTime currentTime = DateTime.UtcNow;
             DateTime resetTime = new DateTime();
-            for (int x = 0; x<=7; x++)
+            if (currentTime.DayOfWeek == DayOfWeek.Thursday)
             {
-                if (currentTime.DayOfWeek == DayOfWeek.Thursday)
+                currentTime = currentTime.AddDays(7);
+                resetTime = new DateTime(
+                    currentTime.Year,
+                    currentTime.Month,
+                    currentTime.Day,
+                    0,
+                    0,
+                    0,
+                    DateTimeKind.Utc);
+            }
+            else
+            {
+                for (int x = 0; x <= 8; x++)
                 {
-
-                    resetTime = new DateTime(
-                        currentTime.Year,
-                        currentTime.Month,
-                        currentTime.Day,
-                        0,
-                        0,
-                        0,
-                        DateTimeKind.Utc);
-                    break;
-                }//end of if
+                    if (currentTime.DayOfWeek == DayOfWeek.Thursday)
+                    {
+                        resetTime = new DateTime(
+                            currentTime.Year,
+                            currentTime.Month,
+                            currentTime.Day,
+                            0,
+                            0,
+                            0,
+                            DateTimeKind.Utc);
+                        break;
+                    }//end of if
                     currentTime = currentTime.AddDays(1);
-            }//end of for
+                }//end of for
+            }
             return resetTime;
         }//end of GetNextWednesdayResetDateTime
 
@@ -157,32 +181,49 @@ namespace MS_CheckList_App
         {
             DateTime currentTime = DateTime.UtcNow;
             DateTime resetTime = new DateTime();
-            for (int x = 0; x <= 7; x++)
+            if (currentTime.DayOfWeek == DayOfWeek.Monday)
             {
-                if (currentTime.DayOfWeek == DayOfWeek.Monday)
+                currentTime = currentTime.AddDays(7);
+                resetTime = new DateTime(
+                    currentTime.Year,
+                    currentTime.Month,
+                    currentTime.Day,
+                    0,
+                    0,
+                    0,
+                    DateTimeKind.Utc);
+            }
+            else
+            {
+                for (int x = 0; x <= 7; x++)
                 {
+                    if (currentTime.DayOfWeek == DayOfWeek.Monday)
+                    {
 
-                    resetTime = new DateTime(
-                        currentTime.Year,
-                        currentTime.Month,
-                        currentTime.Day,
-                        0,
-                        0,
-                        0,
-                        DateTimeKind.Utc);
-                    break;
-                }//end of if
-                currentTime = currentTime.AddDays(1);
-            }//end of for
+                        resetTime = new DateTime(
+                            currentTime.Year,
+                            currentTime.Month,
+                            currentTime.Day,
+                            0,
+                            0,
+                            0,
+                            DateTimeKind.Utc);
+                        break;
+                    }//end of if
+                    currentTime = currentTime.AddDays(1);
+                }//end of for
+            }
             return resetTime;
         }//end of GetNextWednesdayResetDateTime
 
         private void WaitForDailyReset()
         {
-            TimeSpan timeUntilReset = NextDailyResetDateTime().Subtract(DateTime.UtcNow);
+
+            DateTime nextResetTime = NextDailyResetDateTime();
+            TimeSpan timeUntilReset = (nextResetTime.Subtract(DateTime.UtcNow).Duration());
             //TimeSpan timeUntilReset = last_ResetDateTime.AddMinutes(1).Subtract(last_ResetDateTime); //for debugging
-            Trace.WriteLine("Time Until Daily Reset: " + timeUntilReset.ToString());
-            Thread.Sleep(timeUntilReset);
+            Trace.WriteLine(nextResetTime.ToString() + " | " + timeUntilReset.ToString());
+            Thread.Sleep(timeUntilReset.Duration());
             Trace.WriteLine("sleep complete.");
             if (profileLoaded.AutoReset == true)
             {
@@ -200,7 +241,7 @@ namespace MS_CheckList_App
             TimeSpan timeUntilReset = NextWednesdayResetDateTime().Subtract(DateTime.UtcNow);
             //TimeSpan timeUntilReset = last_ResetDateTime.AddMinutes(1).Subtract(last_ResetDateTime);
             Trace.WriteLine("Time Until Wednesday Reset:" + timeUntilReset.ToString());
-            Thread.Sleep(timeUntilReset);
+            Thread.Sleep(timeUntilReset.Duration());
             if (profileLoaded.AutoReset == true)
             {
                 profileLoaded.ResetWeeklyWednesday();
@@ -216,7 +257,7 @@ namespace MS_CheckList_App
             TimeSpan timeUntilReset = NextSundayResetDateTime().Subtract(DateTime.UtcNow);
             //TimeSpan timeUntilReset = last_ResetDateTime.AddMinutes(1).Subtract(last_ResetDateTime);
             Trace.WriteLine("Time Until Sunday Reset: " + timeUntilReset.ToString());
-            Thread.Sleep(timeUntilReset);
+            Thread.Sleep(timeUntilReset.Duration());
             if (profileLoaded.AutoReset == true)
             {
                 profileLoaded.ResetWeeklySunday();
@@ -273,7 +314,7 @@ namespace MS_CheckList_App
                     XmlSerializer xmlSerializer = new XmlSerializer(typeof(Profile));
                     safeFileName = Path.GetFileNameWithoutExtension(saveFileDialog.FileName);
                     fileName = Path.GetFileName(saveFileDialog.FileName);
-                    StreamWriter sw = new StreamWriter(fileName);
+                    StreamWriter sw = new StreamWriter(saveFileDialog.FileName);
                     //profileLoaded.ProfileName = safeFileName;
                     xmlSerializer.Serialize(sw, profileLoaded);
                     sw.Close();
@@ -295,16 +336,17 @@ namespace MS_CheckList_App
         {
             if (isProfileLoaded == true)
             {
-                try {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(Profile));
-                //StreamWriter sw = new StreamWriter(safeFileName + ".xml");
-                //StreamWriter sw = new StreamWriter(fileName);
-                StreamWriter sw = new StreamWriter(pathFileName);
-                xmlSerializer.Serialize(sw, profileLoaded);
-                sw.Close();
-                DataContext = null;
-                DataContext = profileLoaded;
-                StatusBarStatusText("Profile successfully saved.");
+                try
+                {
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(Profile));
+                    //StreamWriter sw = new StreamWriter(safeFileName + ".xml");
+                    //StreamWriter sw = new StreamWriter(fileName);
+                    StreamWriter sw = new StreamWriter(pathFileName);
+                    xmlSerializer.Serialize(sw, profileLoaded);
+                    sw.Close();
+                    DataContext = null;
+                    DataContext = profileLoaded;
+                    StatusBarStatusText("Profile successfully saved.");
                 }
                 catch (Exception)
                 {
@@ -356,8 +398,8 @@ namespace MS_CheckList_App
                         {
                             StatusBarStatusText("File is in use by another process.");
                         }//end of catch
-                        
-                        
+
+
                     }//end of else
                 }//end of try
                 catch (Exception)
@@ -1083,7 +1125,7 @@ namespace MS_CheckList_App
             {
                 MenuItem_AutoSave.IsChecked = true;
             }
-            
+
         }//end of MenuItem_AutoSave_Click
 
         private void MenuItem_AutoReset_Click(object sender, RoutedEventArgs e)
@@ -1098,6 +1140,6 @@ namespace MS_CheckList_App
             }
         }//end of MenuItem_AutoReset_Click
 
-        
+
     }//end of class
 }//end of namespace
