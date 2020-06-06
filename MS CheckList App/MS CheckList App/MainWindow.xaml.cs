@@ -19,6 +19,7 @@ using Path = System.IO.Path;
 using System.Threading;
 using System.Diagnostics;
 using System.Windows.Controls.Primitives;
+using System.Runtime.CompilerServices;
 
 namespace MS_CheckList_App
 {
@@ -78,7 +79,15 @@ namespace MS_CheckList_App
                 }//end of if
                 else
                 {
-                    Trace.WriteLine("Reset detected.");
+                    Trace.WriteLine("Daily Reset Detected, last time dailies were reset: "+profileLoaded.LastDateTimeReset_Daily.ToString());
+                    if (profileLoaded.AutoReset == true)
+                    {
+                        profileLoaded.ResetDaily();
+                        if (profileLoaded.AutoSave == true)
+                        {
+                            SaveExistingProfile();
+                        }
+                    }
                 }//end of else
 
                 int compareWedWeekly = DateTime.Compare(NextWednesdayResetDateTime(), last_WeeklyWedReset);
@@ -94,7 +103,15 @@ namespace MS_CheckList_App
                 }//end of if
                 else
                 {
-                    Trace.WriteLine("Wed Reset detected.");
+                    Trace.WriteLine("Daily Reset Detected, last time WedRes were reset: " + profileLoaded.LastDateTimeReset_Daily.ToString());
+                    if (profileLoaded.AutoReset == true)
+                    {
+                        profileLoaded.ResetDaily();
+                        if (profileLoaded.AutoSave == true)
+                        {
+                            SaveExistingProfile();
+                        }
+                    }
                 }
 
                 int compareSunWeekly = DateTime.Compare(NextSundayResetDateTime(), last_WeeklySunReset);
@@ -110,7 +127,15 @@ namespace MS_CheckList_App
                 }//end of if
                 else
                 {
-                    Trace.WriteLine("Sun Reset detected.");
+                    Trace.WriteLine("Daily Reset Detected, last time SunRes were reset: " + profileLoaded.LastDateTimeReset_Daily.ToString());
+                    if (profileLoaded.AutoReset == true)
+                    {
+                        profileLoaded.ResetDaily();
+                        if (profileLoaded.AutoSave == true)
+                        {
+                            SaveExistingProfile();
+                        }
+                    }
                 }
 
             }//end of if
@@ -229,6 +254,10 @@ namespace MS_CheckList_App
             {
                 Trace.WriteLine("Daily Reset Complete.");
                 profileLoaded.ResetDaily();
+                if (profileLoaded.AutoSave == true)
+                {
+                    SaveExistingProfile();
+                }
             }
             else
             {
@@ -245,6 +274,10 @@ namespace MS_CheckList_App
             if (profileLoaded.AutoReset == true)
             {
                 profileLoaded.ResetWeeklyWednesday();
+                if (profileLoaded.AutoSave == true)
+                {
+                    SaveExistingProfile();
+                }
             }
             else
             {
@@ -261,6 +294,10 @@ namespace MS_CheckList_App
             if (profileLoaded.AutoReset == true)
             {
                 profileLoaded.ResetWeeklySunday();
+                if (profileLoaded.AutoSave == true)
+                {
+                    SaveExistingProfile();
+                }
             }//end of if
             else
             {
@@ -350,7 +387,13 @@ namespace MS_CheckList_App
                 }
                 catch (Exception)
                 {
-                    StatusBarStatusText("Error occured when trying to save.");
+                    StatusBarStatusText("Saving...");
+                    Task sleep = Task.Run(() =>
+                    {
+                        Thread.Sleep(5000);
+                    });
+                    TaskAwaiter awaiter = sleep.GetAwaiter();
+                    awaiter.OnCompleted(() => SaveExistingProfile());
                 }
             }
             else
@@ -415,6 +458,7 @@ namespace MS_CheckList_App
             profileLoaded.ResetAll();
             isProfileLoaded = false;
             DataContext = profileLoaded;
+            statusbar_CurrentFile.Text = null;
             StatusBarStatusText("New profile created");
         }
         #region Tools -> Reset Menus
@@ -837,6 +881,34 @@ namespace MS_CheckList_App
                 SaveExistingProfile();
             }
         }
+        #endregion
+
+        #region Papulatus
+        private void chbx_ePap_Click(object sender, RoutedEventArgs e)
+        {
+            chbx_nPap.IsChecked = false;
+            if (isProfileLoaded == true && profileLoaded.AutoSave == true)
+            {
+                SaveExistingProfile();
+            }
+        }
+
+        private void chbx_nPap_Click(object sender, RoutedEventArgs e)
+        {
+            chbx_ePap.IsChecked = false;
+            if (isProfileLoaded == true && profileLoaded.AutoSave == true)
+            {
+                SaveExistingProfile();
+            }
+        }
+        private void chbx_cPap_Click(object sender, RoutedEventArgs e)
+        {
+            if (isProfileLoaded == true && profileLoaded.AutoSave == true)
+            {
+                SaveExistingProfile();
+            }
+        }
+
         #endregion
 
         #region Other_StackPanel_2

@@ -135,6 +135,9 @@ namespace MS_CheckList_App
         private Boolean eMagnus;
         private Boolean nMagnus;
         private Boolean hMagnus;
+        private Boolean ePap;
+        private Boolean nPap;
+        private Boolean cPap;
         private Boolean gollux;
         private Boolean ursus;
         private Boolean mapleTour;
@@ -211,7 +214,7 @@ namespace MS_CheckList_App
         public Boolean EVLeon
                 {
             get { return eVLeon; }
-    set
+            set
             {
                 if (eVLeon != value)
                 {
@@ -551,6 +554,47 @@ namespace MS_CheckList_App
                 }
             }
         }
+
+        //Pap
+        public Boolean EPap
+        {
+            get { return ePap; }
+            set
+            {
+                if (ePap != value)
+                {
+                    ePap = value;
+                    OnPropertyChanged("EPap");
+                }
+            }
+        }
+
+        public Boolean NPap
+        {
+            get { return nPap; }
+            set
+            {
+                if (nPap != value)
+                {
+                    nPap = value;
+                    OnPropertyChanged("NPap");
+                }
+            }
+        }
+
+        public Boolean CPap
+        {
+            get { return cPap; }
+            set
+            {
+                if (cPap != value)
+                {
+                    cPap = value;
+                    OnPropertyChanged("CPap");
+                }
+            }
+        }
+
 
         //Gollux
         public Boolean Gollux
@@ -1016,6 +1060,8 @@ namespace MS_CheckList_App
             NPinkBean = false;
             EMagnus = false;
             NMagnus = false;
+            EPap = false;
+            NPap = false;
             Gollux = false;
             Ursus = false;
             MapleTour = false;
@@ -1048,6 +1094,7 @@ namespace MS_CheckList_App
             CVellum = false;
             CPinkBean = false;
             HMagnus = false;
+            CPap = false;
             NLotus = false;
             HLotus = false;
             NDamien = false;

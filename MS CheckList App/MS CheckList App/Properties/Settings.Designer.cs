@@ -22,41 +22,5 @@ namespace MS_CheckList_App.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string WeeklyBossResetDay {
-            get {
-                return ((string)(this["WeeklyBossResetDay"]));
-            }
-            set {
-                this["WeeklyBossResetDay"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string DailyResetTime {
-            get {
-                return ((string)(this["DailyResetTime"]));
-            }
-            set {
-                this["DailyResetTime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string WeeklyQuestResetDay {
-            get {
-                return ((string)(this["WeeklyQuestResetDay"]));
-            }
-            set {
-                this["WeeklyQuestResetDay"] = value;
-            }
-        }
     }
 }

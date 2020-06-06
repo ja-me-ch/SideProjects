@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MS_CheckList_App"
         mc:Ignorable="d"
-        Title="MS CheckList App" Height="450" Width="800">
+        Title="MS CheckList App" Height="480" Width="800">
     <Grid>
         <Grid.Resources>
             <Style TargetType="{x:Type Border}">
@@ -37,7 +37,6 @@
                 <MenuItem x:Name="MenuItem_New"  Header="New" Click="MenuItem_New_Click"/>
                 <MenuItem x:Name="MenuItem_Load" Header="Load" Click="MenuItem_Load_Click"/>
                 <MenuItem x:Name="MenuItem_Save" Header="Save" Click="MenuItem_Save_Click" />
-                <!--<MenuItem x:Name="MenuItem_Settings" Header="Settings" Click="MenuItem_Settings_Click"/>-->
                 <MenuItem x:Name="MenuItem_Exit" Header="Exit" Click="MenuItem_Exit_Click"/>
             </MenuItem>
             <MenuItem Header="Profile">
@@ -217,6 +216,17 @@
                 Grid.Row="3"
                 Margin="1">
                 <StackPanel x:Name="StackPanel_2_5">
+                    <CheckBox Name="chbx_ePap" Content="Easy Papulatus" IsChecked="{Binding EPap, Mode=TwoWay}" Click="chbx_ePap_Click" />
+                    <CheckBox Name="chbx_nPap" Content="Normal Papulatus" IsChecked="{Binding NPap, Mode=TwoWay}" Click="chbx_nPap_Click" />
+                    <CheckBox Name="chbx_cPap" Content="Chaos Papulatus" IsChecked="{Binding CPap, Mode=TwoWay}" Click="chbx_cPap_Click"/>
+                </StackPanel>
+            </Border>
+
+            <Border x:Name="Border_2_6"
+                Grid.Column="1"
+                Grid.Row="3"
+                Margin="1">
+                <StackPanel x:Name="StackPanel_2_6">
                     <CheckBox Name="chbx_Gollux" Content="Gollux" IsChecked="{Binding Gollux, Mode=TwoWay}" Click="chbx_Gollux_Click"/>
                     <CheckBox Name="chbx_Ursus" Content="Ursus" IsChecked="{Binding Ursus, Mode=TwoWay}" Click="chbx_Ursus_Click"/>
                     <CheckBox Name="chbx_legQuests" Content="Legion Dailies" IsChecked="{Binding LegQuests, Mode=TwoWay}" Click="chbx_legQuests_Click"/>
