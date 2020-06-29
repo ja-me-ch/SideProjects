@@ -98,6 +98,48 @@ namespace MS_CheckList_App
             }
         }
 
+        private DateTime nextDateTimeReset_DailyReset;
+        public DateTime NextDateTimeReset_DailyReset
+        {
+            get { return nextDateTimeReset_DailyReset; }
+            set
+            {
+                if (nextDateTimeReset_DailyReset != value)
+                {
+                    nextDateTimeReset_DailyReset = value;
+                    OnPropertyChanged("NextDateTimeReset_DailyReset");
+                }
+            }
+        }
+
+        private DateTime nextDateTimeReset_WeeklyWednesday;
+        public DateTime NextDateTimeReset_WeeklyWednesday
+        {
+            get { return nextDateTimeReset_WeeklyWednesday; }
+            set
+            {
+                if (nextDateTimeReset_WeeklyWednesday != value)
+                {
+                    nextDateTimeReset_WeeklyWednesday = value;
+                    OnPropertyChanged("NextDateTimeReset_WeeklyWednesday");
+                }
+            }
+        }
+
+        private DateTime nextDateTimeReset_WeeklySunday;
+        public DateTime NextDateTimeReset_WeeklySunday
+        {
+            get { return nextDateTimeReset_WeeklySunday; }
+            set
+            {
+                if (nextDateTimeReset_WeeklySunday != value)
+                {
+                    nextDateTimeReset_WeeklySunday = value;
+                    OnPropertyChanged("NextDateTimeReset_WeeklySunday");
+                }
+            }
+        }
+
         //Constructors
         public Profile()
         {
